@@ -45,6 +45,10 @@ function App() {
     localStorage.setItem("is-active", isActive)
   }, [isActive]);
 
+  const onReset = () => {
+    setClicks(0);
+  }
+
   
   
   return (
@@ -55,6 +59,7 @@ function App() {
         <>
           <button onClick={handleClick} disabled={overClicks}>clicks:{clicks}</button>
         <p>You clicked {clicks} times</p>
+        <button onClick={onReset}>RESET clicks</button>
         </>}
       <hr />
       
