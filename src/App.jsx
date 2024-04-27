@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import ClickBar from './components/ClickBar/ClickBar';
 
 
 function App() {
@@ -55,12 +56,11 @@ function App() {
     <> 
       <button onClick={clickBarToggle}>{isActive ? "Hide click bar" : "Show click bar"}</button>
       <br />
-      {isActive && 
-        <>
-          <button onClick={handleClick} disabled={overClicks}>clicks:{clicks}</button>
-        <p>You clicked {clicks} times</p>
-        <button onClick={onReset}>RESET clicks</button>
-        </>}
+      {isActive && <ClickBar
+        clickChanger={handleClick}
+        overClicks={overClicks}
+        clicks={clicks}
+        onReset={ onReset} />}
       <hr />
       
     </>
