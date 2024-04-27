@@ -15,7 +15,14 @@ function App() {
   });
 
   const [overClicks, setOverClicks] = useState(false);
-  const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive] = useState(() => {
+    const savedIsActive = localStorage.getItem("is-active");
+    if (savedIsActive !== null) {
+      return JSON.parse(savedIsActive);
+    }
+
+    return false;
+  });
 
   const handleClick = () => {
     console.log("click");
@@ -33,6 +40,10 @@ function App() {
 
     localStorage.setItem("my-clicks", clicks);
   }, [clicks]);
+
+  useEffect(() => {
+    localStorage.setItem("is-active", isActive)
+  }, [isActive]);
 
   
   
