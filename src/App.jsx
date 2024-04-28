@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import ClickBar from './components/ClickBar/ClickBar';
+import FormBar from './components/FormBar/FormBar';
+import ControledFormBar from './components/ControledFormBar/ControledFormBar';
 
 
 function App() {
@@ -48,9 +50,12 @@ function App() {
 
   const onReset = () => {
     setClicks(0);
+    setOverClicks(false);
   }
 
-  
+  const onAdd = (formObj) => { 
+    console.log(formObj);
+  };
   
   return (
     <> 
@@ -61,6 +66,13 @@ function App() {
         overClicks={overClicks}
         clicks={clicks}
         onReset={ onReset} />}
+      <hr />
+      <h1>Uncontroled form</h1>
+      <FormBar onAdd={onAdd} />
+      <hr />
+
+      <h1>Controled Form</h1>
+      <ControledFormBar onAdd={onAdd}/>
       <hr />
       
     </>
